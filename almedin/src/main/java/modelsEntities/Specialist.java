@@ -1,22 +1,36 @@
 package modelsEntities;
 
 import config.JsonParser;
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "Specialists")
 public class Specialist {
-	
-	private int id;
-	
+
+	//Atributes
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(name = "name")
 	private String name;
-	
+
+	@Column(name = "speciality")
 	private String speciality;
-	
+
+	@Column(name = "ubication")
 	private String ubication;
-	
+
+	//nose xq esta mierda no se reconoce....
+	@Column(name = "schedule")
 	private JsonParser schedule;
-	
-	public Specialist(int id, String name, String speciality, String ubication, JsonParser schedule) {
+
+
+	//Constructors
+
+	public Specialist( String name, String speciality, String ubication, JsonParser schedule) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.speciality = speciality;
 		this.ubication = ubication;
@@ -26,11 +40,13 @@ public class Specialist {
 	public Specialist() {
 	}
 
-	public int getId() {
+	//Getters and Setters
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -65,4 +81,5 @@ public class Specialist {
 	public void setSchedule(JsonParser schedule) {
 		this.schedule = schedule;
 	}
+
 }

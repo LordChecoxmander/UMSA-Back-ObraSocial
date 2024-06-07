@@ -1,23 +1,49 @@
 package modelsEntities;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
-public class Recipes {
-	
+@Entity
+@Table(name = "Recipes")
+public class Recipe {
+
+	//Atributes
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(name = "shipmentDate")
+	@Temporal(TemporalType.DATE)
 	private LocalDateTime shipmentDate;
+
+	@Column(name = "description")
+	private String description;
+
+	@Column(name = "active")
+	private boolean active;
 	
-	//Constructores
+	//Constructors
 	
-	public Recipes() {
-	}	
-	
-	public Recipes(LocalDateTime shipmentDate, String description, boolean active) {
-		super();
+	public Recipe() {
+	}
+
+	public Recipe(LocalDateTime shipmentDate, String description, boolean active) {
 		this.shipmentDate = shipmentDate;
 		this.description = description;
 		this.active = active;
 	}
-	
+
+	//Getters and Setter
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public LocalDateTime getShipmentDate() {
 		return shipmentDate;
 	}
@@ -42,8 +68,5 @@ public class Recipes {
 		this.active = active;
 	}
 
-	private String description;
-	
-	private boolean active;
 
 }
