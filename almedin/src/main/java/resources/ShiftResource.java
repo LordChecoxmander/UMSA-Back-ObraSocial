@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import modelsDTO.ShiftDTO;
+import modelsDTO.RequestShiftDTO;
 import modelsEntities.Shift;
 import repositories.ShiftRepository;
 import services.ShiftService;
@@ -20,7 +20,7 @@ public class ShiftResource {
     //Crea un tunro
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createShift(ShiftDTO shiftdto){
+    public Response createShift(RequestShiftDTO shiftdto){
         shiftService.createShift(shiftdto);
 
         //REVISAR ESTE RESPONSE
