@@ -3,20 +3,28 @@ package resources;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import modelsDTO.ShiftDTO;
 import modelsEntities.Shift;
 import repositories.ShiftRepository;
+import services.ShiftService;
 
 @Path("/Turnos")
 public class ShiftResource {
 
     @Inject
     private ShiftRepository repoShift;
+    private ShiftService shiftService;
 
     //Crea un tunro
     @POST
-    @Transactional
-    public void createShift(Shift insertedShift){
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createShift(ShiftDTO shiftdto){
+        shiftService.createShift(shiftdto);
 
+        //REVISAR ESTE RESPONSE
+        return Response.ok(200).build();
     }
 
     //Modifica el turno

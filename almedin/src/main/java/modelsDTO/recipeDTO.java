@@ -1,7 +1,12 @@
 package modelsDTO;
 
-public class recipeDTO {
-	private Long id;
-	private Long idShift;
-	private String description;
+import java.io.Serializable;
+
+public class recipeDTO implements Serializable {
+		private Long id;
+		private Long idShift;
+		private String description;
+
+
+
 }

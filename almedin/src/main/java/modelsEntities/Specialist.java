@@ -13,6 +13,9 @@ public class Specialist {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(name = "password")
+	private String password;
+
 	@Column(name = "name")
 	private String name;
 
@@ -28,16 +31,16 @@ public class Specialist {
 
 
 	//Constructors
+	public Specialist() {
+	}
 
-	public Specialist( String name, String speciality, String ubication, JsonParser schedule) {
-		super();
+	public Specialist(Long id, String password, String name, String speciality, String ubication, JsonParser schedule) {
+		this.id = id;
+		this.password = password;
 		this.name = name;
 		this.speciality = speciality;
 		this.ubication = ubication;
 		this.schedule = schedule;
-	}
-
-	public Specialist() {
 	}
 
 	//Getters and Setters
@@ -82,4 +85,11 @@ public class Specialist {
 		this.schedule = schedule;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
