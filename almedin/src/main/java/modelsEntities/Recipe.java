@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Table(name = "Recipes")
 public class Recipe {
 
-	//Atributes
+	//Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -22,6 +22,10 @@ public class Recipe {
 
 	@Column(name = "active")
 	private boolean active;
+	
+	@OneToOne
+    @JoinColumn(name = "id_shift", referencedColumnName = "id")
+    private Shift shift;
 	
 	//Constructors
 	

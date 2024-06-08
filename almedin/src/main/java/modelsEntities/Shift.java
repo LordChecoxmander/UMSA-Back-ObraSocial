@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "Shifts")
 public class Shift {
-	//Atributes
+	//Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -21,13 +21,15 @@ public class Shift {
 
 	@Column(name = "turnoState")
 	private boolean turnoState;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private User user;
 
-	@Column(name = "specialist")
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "id_specialist", referencedColumnName = "id")
 	private Specialist specialist;
-
-
-
+	
 	//Constructors
 
 	public Shift() {
