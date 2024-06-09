@@ -1,5 +1,5 @@
 package utils;
-/*
+
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -11,9 +11,8 @@ public class PdfGenerator {
 
     public static byte[] generatePdf(Recipe recipe) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            PdfWriter writer = new PdfWriter(baos);
-            com.itextpdf.kernel.pdf.PdfDocument pdfDoc = new com.itextpdf.kernel.pdf.PdfDocument(writer);
-            Document document = new Document(pdfDoc);
+            com.itextpdf.kernel.pdf.PdfWriter writer = new PdfWriter(baos);
+            com.itextpdf.layout.Document document = new Document(new com.itextpdf.kernel.pdf.PdfDocument(writer));
 
             document.add(new Paragraph("Medical Recipe"));
             document.add(new Paragraph("Shift ID: " + recipe.getShift().getId()));
@@ -28,4 +27,3 @@ public class PdfGenerator {
         }
     }
 }
-*/
