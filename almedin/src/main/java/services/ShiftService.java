@@ -4,15 +4,13 @@ package services;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import modelsDTO.ShiftDTO;
+import modelsDTO.RequestShiftDTO;
 import modelsEntities.Shift;
 import modelsEntities.Specialist;
 import modelsEntities.User;
 import repositories.ShiftRepository;
 import repositories.SpecialistRepository;
 import repositories.UserRepository;
-
-import java.time.LocalDateTime;
 
 @Transactional
 @ApplicationScoped
@@ -27,7 +25,7 @@ public class ShiftService {
 
 
     //aca tengo que crear un nuevo turno con los datos del DTO
-    public void createShift(ShiftDTO shiftdto) {
+    public void createShift(RequestShiftDTO shiftdto){
         //busco el medico con el id
         Specialist medic = specialistRepository.findById(shiftdto.getIdSpecialist());
         //busco el usuario por el nombre
@@ -47,6 +45,21 @@ public class ShiftService {
         } else {
             throw new RuntimeException("Shift not found");
         }
+    }
+
+    public void updateShift(RequestShiftDTO shiftdto, Long id){
+
+        //busco el medico con el id
+        Specialist medic = specialistRepository.findById(shiftdto.getIdSpecialist());
+
+        //busco el shift con el id y actualizo la BD
+        Shift s = shiftRepository.findById(id);
+        s.setMotive(shiftdto.getMotive());
+        s.setDate(shiftdto.getDate());
+        s.setSpecialist(medic);
+        shiftRepository.persist(s);
+
+        //return shiftdto;
     }
 
 }

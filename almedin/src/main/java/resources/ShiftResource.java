@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import modelsDTO.ShiftDTO;
+import modelsDTO.RequestShiftDTO;
 import modelsEntities.Shift;
 import repositories.ShiftRepository;
 import services.ShiftService;
@@ -20,7 +20,7 @@ public class ShiftResource {
     //Crea un tunro
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createShift(ShiftDTO shiftdto){
+    public Response createShift(RequestShiftDTO shiftdto){
         shiftService.createShift(shiftdto);
 
         //REVISAR ESTE RESPONSE
@@ -31,13 +31,11 @@ public class ShiftResource {
     //NO le den bola al codigo, esta incompleto le meti algo pa que no llogre el editor
     @PUT
     @Path("{id}")
-    @Transactional
-    public Shift updateShift(@PathParam("id") Long id, Shift updatedShift){
-        Shift upShift = repoShift.findById(id);
-        if(upShift != null){
-            upShift.setId(id);
-        }
-        return upShift;
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateShift(@PathParam("id") Long id, RequestShiftDTO updatedShift){
+
+        shiftService.updateShift(updatedShift, id);
+        return Response.ok(200).build();
     }
 
     // New method to delete a shift

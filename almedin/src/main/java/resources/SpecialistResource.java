@@ -3,8 +3,13 @@ package resources;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import modelsDTO.ResponseSpecialistDTO;
 import modelsEntities.Specialist;
 import repositories.SpecialistRepository;
+import services.SpecialistService;
 
 import java.util.List;
 
@@ -12,10 +17,11 @@ import java.util.List;
 public class SpecialistResource {
 
     @Inject
-    private SpecialistRepository repoSpecialist;
+    private SpecialistService specialistService;
 
     @GET
-    public List<Specialist> getAll() {
-        return repoSpecialist.listAll();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllSpecialist() {
+        return Response.ok(specialistService.getAllSpecialists()).build();
     }
 }
