@@ -40,12 +40,16 @@ public class ShiftResource {
         return upShift;
     }
 
-    //Elimina el turno
+    // New method to delete a shift
     @DELETE
     @Path("{id}")
     @Transactional
-    public void deleteShift(@PathParam("id") Long id){
-
-    }
+    public Response deleteShift(@PathParam("id") Long id) {
+        try {
+            shiftService.deleteShift(id);
+            return Response.noContent().build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
 
 }
