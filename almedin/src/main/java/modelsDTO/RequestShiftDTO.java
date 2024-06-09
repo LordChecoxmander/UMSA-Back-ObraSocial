@@ -2,64 +2,58 @@ package modelsDTO;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class RequestShiftDTO implements Serializable {
 
-    //Attributes
-    private String namePacient;
-    private LocalDateTime date;
-    private Long idSpecialist;
-    private String motive;
+	// Attributes
+	private String namePacient;
+	private LocalDateTime date;
+	private Long idSpecialist;
+	private String motive;
 
-    //Constructors
+	// Constructors
+	public RequestShiftDTO(String namePacient, LocalDateTime date, Long idSpecialist, String motive) {
+		this.namePacient = namePacient;
+		this.date = date;
+		this.idSpecialist = idSpecialist;
+		this.motive = motive;
+	}
 
-    public RequestShiftDTO(String namePacient, LocalDateTime date, Long idSpecialist, String motive) {
-        this.namePacient = namePacient;
-        this.date = date;
-        this.idSpecialist = idSpecialist;
-        this.motive = motive;
-    }
+	public RequestShiftDTO() {
+	}
 
-    public RequestShiftDTO(LocalDateTime date, Long idSpecialist, String motive) {
-        this.date = date;
-        this.idSpecialist = idSpecialist;
-        this.motive = motive;
-    }
+	// Getters and Setters
 
-    public RequestShiftDTO() {}
+	public String getNamePacient() {
+		return namePacient;
+	}
 
-    //Getters and Setters
+	public void setNamePacient(String namePacient) {
+		this.namePacient = namePacient;
+	}
 
+	public LocalDateTime getDate() {
+		return date;
+	}
 
-    public String getNamePacient() {
-        return namePacient;
-    }
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
 
-    public void setNamePacient(String namePacient) {
-        this.namePacient = namePacient;
-    }
+	public Long getIdSpecialist() {
+		return idSpecialist;
+	}
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+	public void setIdSpecialist(Long idSpecialist) {
+		this.idSpecialist = idSpecialist;
+	}
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
+	public String getMotive() {
+		return motive;
+	}
 
-    public Long getIdSpecialist() {
-        return idSpecialist;
-    }
-
-    public void setIdSpecialist(Long idSpecialist) {
-        this.idSpecialist = idSpecialist;
-    }
-
-    public String getMotive() {
-        return motive;
-    }
-
-    public void setMotive(String motive) {
-        this.motive = motive;
-    }
+	public void setMotive(String motive) {
+		this.motive = motive;
+	}
 }
