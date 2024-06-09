@@ -2,7 +2,7 @@ package modelsEntities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -22,7 +22,7 @@ public class User {
 
 	@Column(name = "date")
 	@Temporal(TemporalType.DATE)
-	private LocalDateTime date;
+	private LocalDate date;
 
 	// nose si estara bien poder el enumeraten y el onetoone juntos
 	@Column(name = "user_role")
@@ -45,7 +45,7 @@ public class User {
 		super();
 	}
 
-	public User(Long id, String userName, String password, LocalDateTime date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
+	public User(Long id, String userName, String password, LocalDate date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
@@ -73,11 +73,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

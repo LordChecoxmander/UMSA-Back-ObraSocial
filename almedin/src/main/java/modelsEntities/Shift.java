@@ -2,7 +2,8 @@ package modelsEntities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "Shifts")
@@ -14,7 +15,7 @@ public class Shift {
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Column(name = "motive")
     private String motive;
@@ -41,11 +42,11 @@ public class Shift {
         this.motive = motive;
         this.user = user;
         this.specialist = specialist;
-        this.date = LocalDateTime.now();
+        this.date = LocalDate.now();
         this.turnoState = true;
     }
 
-    public Shift(Long id, Specialist specialist, User user, String motive, boolean turnoState, LocalDateTime date) {
+    public Shift(Long id, Specialist specialist, User user, String motive, boolean turnoState, LocalDate date) {
         this.id = id;
         this.specialist = specialist;
         this.user = user;
@@ -64,11 +65,11 @@ public class Shift {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

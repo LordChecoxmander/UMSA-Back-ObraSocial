@@ -65,8 +65,39 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-      <version>2.13.3</version>
+      <version>2.13.4.1</version>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>3.12.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>2.0.24</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>5.7.0</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- add all iText modules -->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itext-core</artifactId>
+      <version>8.0.4</version>
+      <type>pom</type>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
@@ -119,6 +150,7 @@
           <systemPropertyVariables>
             <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+            <!--suppress UnresolvedMavenProperty, UnresolvedMavenProperty -->
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
         </configuration>

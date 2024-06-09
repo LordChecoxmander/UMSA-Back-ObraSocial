@@ -2,7 +2,7 @@ package modelsEntities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Recipes")
@@ -15,7 +15,7 @@ public class Recipe {
 
 	@Column(name = "shipment_date")
 	@Temporal(TemporalType.DATE)
-	private LocalDateTime shipmentDate;
+	private LocalDate shipmentDate;
 
 	@Column(name = "description")
 	private String description;
@@ -32,7 +32,7 @@ public class Recipe {
 	public Recipe() {
 	}
 
-	public Recipe(LocalDateTime shipmentDate, String description, boolean active) {
+	public Recipe(LocalDate shipmentDate, String description, boolean active) {
 		this.shipmentDate = shipmentDate;
 		this.description = description;
 		this.active = active;
@@ -48,11 +48,11 @@ public class Recipe {
 		this.id = id;
 	}
 
-	public LocalDateTime getShipmentDate() {
+	public LocalDate getShipmentDate() {
 		return shipmentDate;
 	}
 
-	public void setShipmentDate(LocalDateTime shipmentDate) {
+	public void setShipmentDate(LocalDate shipmentDate) {
 		this.shipmentDate = shipmentDate;
 	}
 
@@ -73,4 +73,7 @@ public class Recipe {
 	}
 
 
+	public Shift getShift() {
+		return shift;
+	}
 }
