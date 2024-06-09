@@ -3,20 +3,28 @@ package resources;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import modelsDTO.ShiftDTO;
 import modelsEntities.Shift;
 import repositories.ShiftRepository;
+import services.ShiftService;
 
 @Path("/Turnos")
 public class ShiftResource {
 
     @Inject
     private ShiftRepository repoShift;
+    private ShiftService shiftService;
 
     //Crea un tunro
     @POST
-    @Transactional
-    public void createShift(Shift insertedShift){
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createShift(ShiftDTO shiftdto){
+        shiftService.createShift(shiftdto);
 
+        //REVISAR ESTE RESPONSE
+        return Response.ok(200).build();
     }
 
     //Modifica el turno
@@ -32,12 +40,16 @@ public class ShiftResource {
         return upShift;
     }
 
-    //Elimina el turno
+    // New method to delete a shift
     @DELETE
     @Path("{id}")
     @Transactional
-    public void deleteShift(@PathParam("id") Long id){
-
-    }
+    public Response deleteShift(@PathParam("id") Long id) {
+        try {
+            shiftService.deleteShift(id);
+            return Response.noContent().build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
 
 }

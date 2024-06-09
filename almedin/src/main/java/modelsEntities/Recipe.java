@@ -13,7 +13,7 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "shipmentDate")
+	@Column(name = "shipment_date")
 	@Temporal(TemporalType.DATE)
 	private LocalDateTime shipmentDate;
 

@@ -14,15 +14,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "userName")
+	@Column(name = "user_name")
 	private String userName;
+
+	@Column(name = "password")
+	private String password;
 
 	@Column(name = "date")
 	@Temporal(TemporalType.DATE)
 	private LocalDateTime date;
 
 	// nose si estara bien poder el enumeraten y el onetoone juntos
-	@Column(name = "userRole")
+	@Column(name = "user_role")
 	@Enumerated(value = EnumType.STRING)
 	//@OneToOne
 	private UserRole userRole;
@@ -34,14 +37,18 @@ public class User {
 	@Column(name = "recipes")
 	@OneToMany
 	private List<Recipe> recipes;
+
+
 	//Contructors
 	
 	public User() {
 		super();
 	}
 
-	public User(String userName, LocalDateTime date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
+	public User(Long id, String userName, String password, LocalDateTime date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
+		this.id = id;
 		this.userName = userName;
+		this.password = password;
 		this.date = date;
 		this.userRole = userRole;
 		this.shifts = shifts;
@@ -98,4 +105,11 @@ public class User {
 		this.recipes = recipes;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

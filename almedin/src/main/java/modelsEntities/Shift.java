@@ -19,7 +19,7 @@ public class Shift {
 	@Column(name = "motive")
 	private String motive;
 
-	@Column(name = "turnoState")
+	@Column(name = "turno_state")
 	private boolean turnoState;
 	
 	@ManyToOne
@@ -35,16 +35,26 @@ public class Shift {
 	public Shift() {
 
     }
-	
-	public Shift(LocalDateTime date, String motive, boolean turnoState, Specialist specialist) {
-		super();
-		this.date = date;
+
+	//constructor que setea por defecto la fecha y el estado
+	public Shift(String motive, User user, Specialist specialist) {
+		this.motive = motive;
+		this.user = user;
+		this.specialist = specialist;
+		this.date = LocalDateTime.now();
+		this.turnoState = true;
+	}
+
+	public Shift(Long id, Specialist specialist, User user, String motive, boolean turnoState, LocalDateTime date) {
+		this.id = id;
+		this.specialist = specialist;
+		this.user = user;
 		this.motive = motive;
 		this.turnoState = turnoState;
-        this.specialist = specialist;
-    }
+		this.date = date;
+	}
 
-	//Getters and Setters
+//Getters and Setters
 
 	public Long getId() {
 		return id;
