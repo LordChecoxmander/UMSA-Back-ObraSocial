@@ -62,4 +62,11 @@ public class ShiftService {
         //return shiftdto;
     }
 
+    public void setShiftRepository(ShiftRepository shiftRepositoryTest) {
+        this.shiftRepository = shiftRepositoryTest;
+    }
+
+    public void setUserRepository(UserRepository userRepositoryTest) {
+        this.userRepository = userRepositoryTest;
+    }
 }

@@ -22,7 +22,6 @@ public class SpecialistDTO {
 
     public SpecialistDTO() {
     }
-}
 
     //Getters and Setters
     public Long getId() {
@@ -64,3 +63,4 @@ public class SpecialistDTO {
     public void setSchedule(JsonParser schedule) {
         this.schedule = schedule;
     }
+}

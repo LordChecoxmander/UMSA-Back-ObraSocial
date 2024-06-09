@@ -95,4 +95,5 @@ public class Shift {
     public void setSpecialist(Specialist specialist) {
         this.specialist = specialist;
     }
+
 }

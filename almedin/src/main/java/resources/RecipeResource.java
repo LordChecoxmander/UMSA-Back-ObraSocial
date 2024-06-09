@@ -1,4 +1,4 @@
-package resources;
+package services;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -13,11 +13,9 @@ public class RecipeResource {
     @Inject
     private RecipeRepository repoRecipe;
 
-    //Retorna la receta con el id solicitado
     @GET
     @Path("{id}")
     public Recipe getRecipe(@PathParam("id") Long id) {
         return repoRecipe.findById(id);
     }
-
 }

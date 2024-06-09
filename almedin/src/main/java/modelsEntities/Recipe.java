@@ -73,4 +73,7 @@ public class Recipe {
 	}
 
 
+	public Shift getShift() {
+		return shift;
+	}
 }
