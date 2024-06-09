@@ -20,7 +20,6 @@ public class SpecialistRepository implements PanacheRepository<Specialist> {
 
     //Creo una query para devolver los especialistas sin su id(el ResponseSpecialistDTO)
     public List<ResponseSpecialistDTO> getAllSpecialistsResponse() {
-        return em.createQuery("SELECT p.name, p.ubication, p.speciality, p.schedule " +
-                "FROM Specialist p", ResponseSpecialistDTO.class).getResultList();
+        return em.createQuery("SELECT p.name, p" + ".ubication, p.speciality, p" + ".schedule " + "FROM Specialist" + " p", ResponseSpecialistDTO.class).getResultList();
     }
 }

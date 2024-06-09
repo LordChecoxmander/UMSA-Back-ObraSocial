@@ -31,13 +31,11 @@ public class ShiftResource {
     //NO le den bola al codigo, esta incompleto le meti algo pa que no llogre el editor
     @PUT
     @Path("{id}")
-    @Transactional
-    public Shift updateShift(@PathParam("id") Long id, Shift updatedShift){
-        Shift upShift = repoShift.findById(id);
-        if(upShift != null){
-            upShift.setId(id);
-        }
-        return upShift;
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateShift(@PathParam("id") Long id, RequestShiftDTO updatedShift){
+
+        shiftService.updateShift(updatedShift, id);
+        return Response.ok(200).build();
     }
 
     //Elimina el turno

@@ -20,6 +20,12 @@ public class RequestShiftDTO implements Serializable {
         this.motive = motive;
     }
 
+    public RequestShiftDTO(LocalDateTime date, Long idSpecialist, String motive) {
+        this.date = date;
+        this.idSpecialist = idSpecialist;
+        this.motive = motive;
+    }
+
     public RequestShiftDTO() {}
 
     //Getters and Setters

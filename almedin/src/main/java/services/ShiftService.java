@@ -37,4 +37,19 @@ public class ShiftService {
          shiftRepository.persist(s);
     }
 
+    public void updateShift(RequestShiftDTO shiftdto, Long id){
+
+        //busco el medico con el id
+        Specialist medic = specialistRepository.findById(shiftdto.getIdSpecialist());
+
+        //busco el shift con el id y actualizo la BD
+        Shift s = shiftRepository.findById(id);
+        s.setMotive(shiftdto.getMotive());
+        s.setDate(shiftdto.getDate());
+        s.setSpecialist(medic);
+        shiftRepository.persist(s);
+
+        //return shiftdto;
+    }
+
 }
