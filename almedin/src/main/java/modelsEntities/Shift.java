@@ -1,24 +1,32 @@
 package modelsEntities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+@ApiModel(value= "shift", description = "representacion de los turnos")
 @Entity
 @Table(name = "Shifts")
 public class Shift {
     //Attributes
+    @ApiModelProperty(notes="id numerico autoincremental y unico de cada turno")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ApiModelProperty(notes="fecha del turno", example = "3/08/2024", required = true)
     @Column(name = "date")
-    @Temporal(TemporalType.DATE)
-    private LocalDateTime date;
+    private LocalDate date;
 
+    @ApiModelProperty(notes="motivo de la turno", example = "fractura expuesta de pierna",
+            required = true)
     @Column(name = "motive")
     private String motive;
 
+    @ApiModelProperty(notes="estado del turno, activo o finalizado",
+            required = true)
     @Column(name = "turno_state")
     private boolean turnoState;
 
@@ -41,11 +49,11 @@ public class Shift {
         this.motive = motive;
         this.user = user;
         this.specialist = specialist;
-        this.date = LocalDateTime.now();
+        this.date = LocalDate.now();
         this.turnoState = true;
     }
 
-    public Shift(Long id, Specialist specialist, User user, String motive, boolean turnoState, LocalDateTime date) {
+    public Shift(Long id, Specialist specialist, User user, String motive, boolean turnoState, LocalDate date) {
         this.id = id;
         this.specialist = specialist;
         this.user = user;
@@ -64,11 +72,11 @@ public class Shift {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

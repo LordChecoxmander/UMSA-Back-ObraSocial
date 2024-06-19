@@ -1,28 +1,33 @@
 package modelsEntities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
-
+@ApiModel(value= "user", description = "representacion de los clientes de la obra social")
 @Entity
 @Table(name = "Specialists")
 public class User {
 	//Atributes
+	@ApiModelProperty(notes="id numerico autoincremental y unico de cada turno")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@ApiModelProperty(notes="nombre y apellido del cliente", example = "juan perez", required = true)
 	@Column(name = "user_name")
 	private String userName;
 
+	@ApiModelProperty(notes="contrasela del cliente", example = "unaContraDificil01", required = true)
 	@Column(name = "password")
 	private String password;
 
+	@ApiModelProperty(notes="fecha nacimiento del cliente", example = "05/02/1956", required = true)
 	@Column(name = "date")
-	@Temporal(TemporalType.DATE)
-	private LocalDateTime date;
+	private LocalDate date;
 
 	// nose si estara bien poder el enumeraten y el onetoone juntos
 	@Column(name = "user_role")
@@ -45,7 +50,7 @@ public class User {
 		super();
 	}
 
-	public User(Long id, String userName, String password, LocalDateTime date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
+	public User(Long id, String userName, String password, LocalDate date, UserRole userRole, List<Shift> shifts, List<Recipe> recipes) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
@@ -73,11 +78,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
