@@ -3,6 +3,7 @@ package config;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.Entity;
 
 public class JsonParser {
     private String jsonString;

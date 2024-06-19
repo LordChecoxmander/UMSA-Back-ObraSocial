@@ -1,5 +1,6 @@
 package resources;
 
+import io.swagger.annotations.ApiParam;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -7,6 +8,9 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import modelsDTO.RequestShiftDTO;
 import modelsEntities.Shift;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import repositories.ShiftRepository;
 import services.ShiftService;
 
@@ -20,6 +24,10 @@ public class ShiftResource {
     //Crea un tunro
     @POST
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "create a shift", description = "Crea un turno con los datos ingresados")
+    @APIResponses(value = {
+            @APIResponse(responseCode = "200", description = "shitf created")
+    })
     public Response createShift(RequestShiftDTO shiftdto){
         shiftService.createShift(shiftdto);
 
@@ -32,7 +40,12 @@ public class ShiftResource {
     @PUT
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateShift(@PathParam("id") Long id, RequestShiftDTO updatedShift){
+    @Operation(summary = "update a shift", description = "Actualiza el turno del id ingresado con los datos asociados")
+    @APIResponses(value = {
+            @APIResponse(responseCode = "200", description = "shitf updated")
+    })
+    public Response updateShift(@ApiParam(value="id del turno", name=" id", example="2", required=true) @PathParam("id") Long id,
+                                @ApiParam(value="valores a actualizar", name="turno actualizado", required = true) RequestShiftDTO updatedShift){
 
         shiftService.updateShift(updatedShift, id);
         return Response.ok(200).build();
@@ -42,7 +55,11 @@ public class ShiftResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response deleteShift(@PathParam("id") Long id) {
+    @Operation(summary = "delete a shift", description = "Elimina el turno con el id ingresado")
+    @APIResponses(value = {
+            @APIResponse(responseCode = "200", description = "shitf deleted")
+    })
+    public Response deleteShift(@ApiParam(value="id del turno", name=" id", example="2", required=true) @PathParam("id") Long id) {
         try {
             shiftService.deleteShift(id);
             return Response.noContent().build();

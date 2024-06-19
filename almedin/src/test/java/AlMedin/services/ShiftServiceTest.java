@@ -19,7 +19,6 @@ import repositories.UserRepository;
 import services.ShiftService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @ExtendWith(MockitoExtension.class)
 public class ShiftServiceTest {
@@ -92,7 +91,7 @@ public class ShiftServiceTest {
         Long shiftId = 1L;
         RequestShiftDTO shiftDTO = new RequestShiftDTO();
         shiftDTO.setMotive("New motive");
-        shiftDTO.setDate(LocalDateTime.now());
+        shiftDTO.setDate(LocalDate.now());
         shiftDTO.setIdSpecialist(1L);
 
         // Mock repository
@@ -109,7 +108,8 @@ public class ShiftServiceTest {
         // Verify that the shift was updated
         assertEquals("New motive", existingShift.getMotive());
         // Verificar que la fecha es igual, sin tener en cuenta la hora
-        assertEquals(LocalDate.now(), existingShift.getDate().toLocalDate());
+        //assertEquals(LocalDate.now(), existingShift.getDate().toLocalDate());
+        assertEquals(LocalDate.now(), existingShift.getDate());
 
         assertEquals(specialist, existingShift.getSpecialist());
     }
@@ -120,7 +120,7 @@ public class ShiftServiceTest {
         Long shiftId = 1L;
         RequestShiftDTO shiftDTO = new RequestShiftDTO();
         shiftDTO.setMotive("New motive");
-        shiftDTO.setDate(LocalDateTime.now());
+        shiftDTO.setDate(LocalDate.now());
         shiftDTO.setIdSpecialist(1L);
 
         // Mock repository
