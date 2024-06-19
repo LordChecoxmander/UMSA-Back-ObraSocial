@@ -1,18 +1,18 @@
 package modelsDTO;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class RequestShiftDTO implements Serializable {
 
 	// Attributes
 	private String namePacient;
-	private LocalDateTime date;
+	private LocalDate date;
 	private Long idSpecialist;
 	private String motive;
 
 	// Constructors
-	public RequestShiftDTO(String namePacient, LocalDateTime date, Long idSpecialist, String motive) {
+	public RequestShiftDTO(String namePacient, LocalDate date, Long idSpecialist, String motive) {
 		this.namePacient = namePacient;
 		this.date = date;
 		this.idSpecialist = idSpecialist;
@@ -32,11 +32,11 @@ public class RequestShiftDTO implements Serializable {
 		this.namePacient = namePacient;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
